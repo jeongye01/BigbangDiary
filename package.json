@@ -1,0 +1,28 @@
+{
+  "name": "bigbangdiary",
+  "version": "1.0.0",
+  "description": "what a beutiful diary!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeongye01/BigbangDiary.git"
+  },
+  "author": "yewon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeongye01/BigbangDiary/issues"
+  },
+  "homepage": "https://github.com/jeongye01/BigbangDiary#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/node": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
