@@ -4,7 +4,7 @@ fullstack-project . vanilla javascirpt,pug,express,nodejs,mongodb
 
 # Router
 
-$globalRouter
+$rootRouter
 /home []
 /login []
 /logout []
