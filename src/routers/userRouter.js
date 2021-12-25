@@ -5,7 +5,7 @@ const userRouter=express.Router();
 
 userRouter.get("/:id",seeProfile);
 userRouter.route("/:id/edit").get(editUser).post(editUser);
-userRouter.get("/:id/delete",removeUser);
+userRouter.get("/:id/delete",deleteUser);
 
 
 
