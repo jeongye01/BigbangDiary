@@ -2,10 +2,14 @@ extends layout.pug
 
 
 block content
-  img(src="/"+user.avatarUrl)
-  span 사용자 이름 : #{user.name}
-  span 이메일 : #{user.email}
-  span 가입일 : #{user.createdAt} 
+  img(src="/"+loggedInUser.avatarUrl)
+  span 사용자 이름 : #{loggedInUser.username}
+  span 이메일 : #{loggedInUser.email}
+  span 가입일 : #{loggedInUser.createdAt}
+  a(href="/user/edit") 프로필 수정
+  a(href="/user/change-password") 비밀번호 변경 
+  a(href="/user/delete") 탈퇴
+  
 
 
   

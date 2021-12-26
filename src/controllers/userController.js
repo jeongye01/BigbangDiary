@@ -1,4 +1,5 @@
 import User from "../models/User";
+import bcrypt from "bcrypt";
 export const login=async (req,res)=>{
   const pageTitle="Login";
   if(req.method==="GET"){
@@ -19,7 +20,8 @@ export const login=async (req,res)=>{
   }
 }
 export const logout=(req,res)=>{
-  return res.end();
+  req.session.destroy();
+  return res.redirect("/");
 }
 export const join=async (req,res)=>{
   const pageTitle="Join";
@@ -60,5 +62,8 @@ export const editUser=(req,res)=>{
   return res.end();
 }
 export const deleteUser=(req,res)=>{
+  return res.end();
+}
+export const changePassword=(req,res)=>{
   return res.end();
 }

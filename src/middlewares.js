@@ -1,4 +1,4 @@
-export const localMiddleware=(req,res,next)=>{
+export const localsMiddleware=(req,res,next)=>{
   res.locals.loggedIn=Boolean(req.session.loggedIn);
   res.locals.siteName="BigbangDiary";
   res.locals.loggedInUser=req.session.user || {};
@@ -6,6 +6,7 @@ export const localMiddleware=(req,res,next)=>{
 }
 
 export const protectedMiddleware=(req,res,next)=>{
+  
   if(req.session.loggedIn){
     return next();
   }else{

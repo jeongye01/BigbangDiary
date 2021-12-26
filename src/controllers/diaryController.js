@@ -2,6 +2,7 @@
 //uploadDiary,readDiary,editDiary,deleteDiary
 
 export const home=(req,res)=>{
+  console.log(req.session.loggedIn,"home!!!");
   return res.render("home",{pageTitle:"Home"});
 }
 export const search=(req,res)=>{

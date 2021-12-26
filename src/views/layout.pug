@@ -4,16 +4,22 @@ html(lang="ko")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{pageTitle} | BigbangDiary 
+    title #{pageTitle} | #{siteName}
   body
     nav
       div 
         h1 BigBang
         h1 Diary
         //logo
-      div
-        a(href="/join") join 
-        a(href="/login") login
+      
+      if loggedIn
+        a(href=`/user/${loggedInUser._id}`) profile
+        a(href="/diary/upload") upload
+        a(href="/logout") logout
+      else
+        div
+          a(href="/join") join 
+          a(href="/login") login
     
       div 
         span today 우주
