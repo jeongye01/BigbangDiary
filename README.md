@@ -7,11 +7,11 @@ fullstack-project . vanilla javascirpt,pug,express,nodejs,mongodb
 $rootRouter
 /home []
 /login []
-/logout []
 /join[]
 /search []
-
+/logout []
 $user
+
 /see []
 /edit []
 /delete []

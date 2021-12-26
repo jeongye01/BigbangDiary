@@ -2,5 +2,12 @@ extends layout.pug
 
 
 block content
+  if errorMessage 
+    span=errorMessage 
   form(method="POST")
-    input(value=)
+    input(name="username",placeholder="이름",type="text",required)
+    input(name="email",placeholder="이메일",type="text",requried)
+    input(name="password",placeholder="비밀번호",type="password",required)
+    input(name="password2",placeholder="비밀번호 확인",type="password",required)
+    input(type="submit",value="회원가입")
+  
