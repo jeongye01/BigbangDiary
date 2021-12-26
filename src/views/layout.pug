@@ -1,0 +1,28 @@
+doctype html
+html(lang="ko")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{pageTitle} | BigbangDiary 
+  body
+    nav
+      div 
+        h1 BigBang
+        h1 Diary
+        //logo
+      div
+        a(href="/join") join 
+        a(href="/login") login
+    
+      div 
+        span today 우주
+        img(href="#")
+        p 명언
+        span 지구날씨
+        span 화성날씨
+      span &copy 2021 BBD
+      //search
+    main
+      block content 
+      

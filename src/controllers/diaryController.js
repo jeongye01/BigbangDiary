@@ -2,7 +2,7 @@
 //uploadDiary,readDiary,editDiary,deleteDiary
 
 export const home=(req,res)=>{
-  return res.end();
+  return res.render("home",{pageTitle:"Home"});
 }
 export const search=(req,res)=>{
   return res.end();
