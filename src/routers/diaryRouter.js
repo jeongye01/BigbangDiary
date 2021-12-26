@@ -1,5 +1,5 @@
 import express from "express";
-import {uploadDiary,readDiary,editDiary,deleteDiary} from "../controllers/diaryConroller";
+import {uploadDiary,readDiary,editDiary,deleteDiary} from "../controllers/diaryController";
 
 const diaryRouter=express.Router();
 

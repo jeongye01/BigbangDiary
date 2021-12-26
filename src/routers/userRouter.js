@@ -1,5 +1,5 @@
 import express from "express";
-import {seeProfile,editUser,removeUser} from "../controllers/userConroller";
+import {seeProfile,editUser,deleteUser} from "../controllers/userController";
 
 const userRouter=express.Router();
 
