@@ -6,6 +6,7 @@ import diaryRouter from './routers/diaryRouter';
 import MongoStore from 'connect-mongo';
 import session from "express-session";
 import { localsMiddleware } from "./middlewares";
+
 const app = express();
 app.set("view engine","pug");
 app.set("views",process.cwd()+"/src/views");
@@ -19,6 +20,7 @@ app.use(session({
   store:MongoStore.create({mongoUrl:process.env.DB_URL})
 }));
 app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads"));
 app.use("/",rootRouter);
 app.use("/user",userRouter);
 app.use("/diary",diaryRouter);

@@ -1,3 +1,4 @@
+import multer from "multer";
 export const localsMiddleware=(req,res,next)=>{
   res.locals.loggedIn=Boolean(req.session.loggedIn);
   res.locals.siteName="BigbangDiary";
@@ -13,3 +14,7 @@ export const protectedMiddleware=(req,res,next)=>{
     return res.redirect("/");
   }
 }
+export const avatarUpload=multer({
+  dest:"uploads/avatars",
+
+});

@@ -1,0 +1,12 @@
+extends layout.pug 
+
+
+block content
+  if errorMessage 
+    span=errorMessage 
+  form(method="POST",enctype="multipart/form-data")
+    input(type="file",name="avatar",accept="image/*")
+    input(name="username",placeholder="이름",value=loggedInUser.username,type="text",required)
+    input(name="email",placeholder="이메일",value=loggedInUser.email,type="email",requried)
+    input(type="submit",value="저장")
+  
