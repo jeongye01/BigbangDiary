@@ -3,16 +3,16 @@ import bcrypt from "bcrypt";
 export const login=async (req,res)=>{
   const pageTitle="Login";
   if(req.method==="GET"){
-  return res.render("login",{pageTitle});
+  return res.render("user/login",{pageTitle});
   }else{
     const {body:{email,password}}=req;
     const user=await User.findOne({email});
     if(!user){
-      return res.status(400).render("login",{pageTitle,errorMessage:"존재하지 않는 이메일입니다."});
+      return res.status(400).render("user/login",{pageTitle,errorMessage:"존재하지 않는 이메일입니다."});
     }
     const checkPassword=await bcrypt.compare(password,user.password);
     if(!checkPassword){
-      return res.status(400).render("login",{pageTitle,errorMessage:"비밀번호가 틀렸습니다."});
+      return res.status(400).render("user/login",{pageTitle,errorMessage:"비밀번호가 틀렸습니다."});
     }
     req.session.loggedIn=true;
     req.session.user=user;
@@ -33,19 +33,19 @@ export const logout=(req,res)=>{
 export const join=async (req,res)=>{
   const pageTitle="Join";
   if(req.method==="GET"){
-    return res.render("join",{pageTitle});
+    return res.render("user/join",{pageTitle});
   }else{
     console.log(req.body);
     const {body:{username,email,password,password2}}=req;
     const exists=await User.exists({$or:[{username},{email}]});
     if(exists){
-      return res.status(400).render("join",{
+      return res.status(400).render("user/join",{
         pageTitle,
         errorMessage:"이미 사용 중인 이름 혹은 이메일입니다."
       });
     }
     if(password!==password2){
-      return res.status(400).render("join",{
+      return res.status(400).render("user/join",{
          pageTitle,
          errorMessage:"비밀번호가 일치 하지 않습니다."
       });
@@ -54,7 +54,7 @@ export const join=async (req,res)=>{
       await User.create({username,email,password});
       return res.redirect("/login");
     }catch(error){
-      return res.status(400).render("join", {
+      return res.status(400).render("user/join", {
         pageTitle,
         errorMessage: error._message,
       });
@@ -66,7 +66,7 @@ export const join=async (req,res)=>{
 
 
 export const seeProfile=(req,res)=>{
-  return res.render("seeProfile",{pageTitle:"Profile"});
+  return res.render("user/seeProfile",{pageTitle:"Profile"});
 }
 
 
@@ -74,7 +74,7 @@ export const seeProfile=(req,res)=>{
 export const editUser=async (req,res)=>{
   const pageTitle="Edit Profile"
   if(req.method==="GET"){
-    return res.render("editProfile",{pageTitle});
+    return res.render("user/editProfile",{pageTitle});
   }else{
     const {
       session:{user:{_id,avatarUrl}},
@@ -94,7 +94,7 @@ export const editUser=async (req,res)=>{
     return res.redirect("/user/_id");}
     catch(error){
      
-      return res.render("editProfile",{pageTitle,errorMessage:"예기치 못한 오류가 발생했습니다."})
+      return res.render("user/editProfile",{pageTitle,errorMessage:"예기치 못한 오류가 발생했습니다."})
     }
   }
 }
@@ -114,7 +114,7 @@ export const deleteUser=async (req,res)=>{
 export const changePassword=async (req,res)=>{
   const pageTitle="Change Password";
   if(req.method==="GET"){
-    return res.render("changePassword",{pageTitle});
+    return res.render("user/changePassword",{pageTitle});
   }else{
     const {
       session:{
@@ -125,10 +125,10 @@ export const changePassword=async (req,res)=>{
     const user=await User.findById(_id);
     const secureOk=await bcrypt.compare(oldPassword,user.password);
     if(!secureOk){
-      return res.status(400).render("changePassword",{pageTitle,errorMessage:"현재 비밀번호가 틀렸습니다."});
+      return res.status(400).render("user/changePassword",{pageTitle,errorMessage:"현재 비밀번호가 틀렸습니다."});
     }
     if(newPassword!==newPassword2){
-      return res.status(400).render("changePassword", {
+      return res.status(400).render("user/changePassword", {
         pageTitle,
         errorMessage: "비밀번호가 일치하지 않습니다.",
       });
